@@ -11,12 +11,12 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 
-sales_dataset = pd.read_csv('../../data/sales_dataset.csv', sep=',', decimal='.')
+sales = pd.read_csv('../../data/sales_dataset.csv', sep=',', decimal='.')
 #QC OK
 """
-Cuantitative
+Cuantitative Weekly Sales
 """
-store_1_dept_1 = sales_dataset[((sales_dataset["Store"] == 1)&(sales_dataset["Dept"] == 1))]
+store_1_dept_1 = sales[((sales["Store"] == 1)&(sales["Dept"] == 1))]
 week_sales_store_1 = store_1_dept_1["Weekly_Sales"]
 
 
@@ -44,12 +44,12 @@ plt.legend()
 plt.show()
 
 """
-Nominal
+Nominal Store Weekly_Sales
 """
-store_1 = sales_dataset[sales_dataset["Store"] == 1]
+store_1 = sales[sales["Store"] == 1]
 
-total_sales = sales_dataset["Weekly_Sales"].sum()
-num_total_dept = sales_dataset.Dept.unique()
+total_sales = sales["Weekly_Sales"].sum()
+num_total_dept = sales.Dept.unique()
 
 total_dept_sales = []
 bar_list = []

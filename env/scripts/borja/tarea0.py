@@ -14,7 +14,7 @@ import matplotlib.pyplot as plt
 sales_dataset = pd.read_csv('../../data/sales_dataset.csv', sep=',', decimal='.')
 #QC OK
 """
-Cuantitativa
+Cuantitative
 """
 store_1_dept_1 = sales_dataset[((sales_dataset["Store"] == 1)&(sales_dataset["Dept"] == 1))]
 week_sales_store_1 = store_1_dept_1["Weekly_Sales"]
@@ -41,4 +41,31 @@ plt.text(47200, 45, box_string, bbox=props)
 plt.axvline(x=mean_wsd, linewidth=1, linestyle="solid", color="red", label="Mean")
 plt.axvline(x=mean_wsd+std_wsd, linewidth=1, linestyle="dashed", color="blue", label="Mean + S.D")
 plt.legend()
+plt.show()
+
+"""
+Nominal
+"""
+store_1 = sales_dataset[sales_dataset["Store"] == 1]
+
+total_sales = sales_dataset["Weekly_Sales"].sum()
+num_total_dept = sales_dataset.Dept.unique()
+
+total_dept_sales = []
+bar_list = []
+for handler in num_total_dept:
+    temp = store_1.loc[store_1['Dept']==handler,'Weekly_Sales'].sum()
+    if (0.1< ((temp/total_sales)*100)):
+        total_dept_sales.append(temp)
+        bar_list.append('D'+str(handler))
+
+mytable2 = (total_dept_sales/total_sales)*100
+
+title = 'Figure 1. Percentage of weather situations'
+xLabel = 'Different weather situations'
+yLabel = 'Percentage'
+plt.bar(bar_list,mytable2)
+plt.xlabel("Departament")
+plt.ylabel("Percentage over total sales")
+plt.title("Fig.2: Only Deparments over 10% of total sales")
 plt.show()
