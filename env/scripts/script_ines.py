@@ -10,31 +10,31 @@ Descripción de variables: del dataset Retail Data Analytics, que contiene datos
 """
 
 """
-La base de datos Retail Data Analytics contiene información sobre las ventas en 45 tiendas (retail stores) en diferentes regiones y sus respectivos departamentos. Hay 3 csv, con diferente información
-que se pueden unir con el ID store (el númro de la tienda):
-    1. Store: Contiene información sobre 
-        - Store: Número identificador de la tienda
+The database Retail Data Analytics contains historical data for 45 stores (and each of their departmente) located in different regions. 
+There are three different files containing different information, that can be merged by the store ID (identification number of each retail store). 
+    1. Store: This file contains the following variables:
+        - Store: Store identification number.
         - Type: A, B, o C.
-        - Size: Tamaño de la tienda, en square feet.
-    2. Features: Contiene información relacionada a la tienda, los departamentos, y la actividad regional 
-        - Store: Número identificador de la tienda
-        - Date: Semana
-        - Temperature: Temperatura media en la región
-        - Fuel_Price: Precio del combustible en la región.
-        - MarkDown1-5: Datos anónimos relacionados con descuentos promocionales. Los datos sobre descuentos sólo están disponibles a partir de noviembre del 2011. 
-          La información no está disponible para todas las tiendas en todas las fechas. Los missing values se denominan como NA.
-        - CPI: Índice de precios al consumo. 
-        - Unemployment rate: Tasa de paro
-        - IsHoliday: Variable que identifica si la semana es una semana especial por vacaciones.
-     3. Sales: Datos históricos sobre ventas, desde el 05/02/2005 hasta el 01/11/2011, donde encontramos los siguientes campos:
-         - Store: Número identificador de la tienda.
-         - Dept: Número identificador del departamento.
-         - Date: Semana
-         - Weekly_Sales: Ventas cada semana en un departamento determinado en una tienda determinada.
-Este conjunto de datos nos sirve para predecir, en primer lugar, las ventas por departamento en cada tienda en años próximos. Además. podemos analizar el
-impacto de los descuentos en las semanas de vacaciones, y así dar recomendaciones paor regiones y tiendas que tengan un impacto positivo en las ventas y en el modelo de negocio.
+        - Size: Expressed in square feet.
+    2. Features: This file contains inforation related to the stores, the departments, and the regional activity.
+        - Store: Store identification number.
+        - Date: Week
+        - Temperature: Average temperature in region.
+        - Fuel_Price: Cost of fuel in the region
+        - MarkDown1-5: Anonymized data related to promotional markdowns. MarkDown data is only available after Nov 2011, and is not available for all stores all the time. Any missing value is marked with an NA
+        - CPI: Consumer price index
+        - Unemployment rate: The unemployment rate
+        - IsHoliday: This variable indicates whether the week is a special holiday week.
+     3. Sales: Historical sales data from 2010-02-05 to 2012-11-01:
+         - Store: Store identification number.
+         - Dept: Department identification number.
+         - Date: Week
+         - IsHoliday: This variable indicates whether the week is a special holiday week.
 
-En este primer ejercicio, se describen diferentes variables del dataset, tanto nominales como cuantitativas. 
+This data is useful to predict department-wide sales in the coming years, and to analyse the impact of mardowns on holiday weekes. 
+The analysis could help in providing recommendations based on data to increase sales and adapt the business model to changing environments.
+
+Below, we describe some of the variables (either nominal or cuantitative).
 
 Del archivo stores vamos a explorar la variable nominal Type y la varibale cuantitativa size. 
 
@@ -90,9 +90,9 @@ mytable3
 
 bar_list = ['A', 'B', 'C']
 plt.bar(bar_list, mytable2, color='lightsteelblue')
-plt.ylabel('Porcentaje')
-plt.xlabel('Tipo de tienda')
-plt.title('Gráfico 1. Distribución porcentual de los tipos de tiendas')
+plt.ylabel('Percentage')
+plt.xlabel('Type of shop')
+plt.title('Figure 1. Percentage distribution of type of shops')
 plt.show()
 
 # En el gráfico observamos que casi un 50% de las tiendas son de tipo A, mientras que menos de un 20% son de tipo C. Las tiendas tipo B representan alrededor del 40%
@@ -122,9 +122,9 @@ textstr='$\mathrm{n}=%.0f$'%(n)
 
 plt.hist(x, edgecolor='grey', color='lightsteelblue', bins=8)
 plt.xticks(ticks)
-plt.title('Gráfico 2. Tamaño de las tiendas''\n' '           Square feet')
-plt.ylabel('Frecuencia')
-plt.xlabel('Tamaño de las tiendas')
+plt.title('Figure 2. Store size''\n' '           Square feet')
+plt.ylabel('Frequency')
+plt.xlabel('Stores size')
 plt.text (10000,12, textstr, fontsize=8, bbox=props)
 plt.axvline(x=m, linewidth=0.8, linestyle= 'solid', color="indianred", label='Mean')
 plt.axvline(x=m-sd, linewidth=0.8, linestyle= 'dashed', color="darkseagreen", label='-1 SD')
