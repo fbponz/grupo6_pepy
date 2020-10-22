@@ -38,6 +38,7 @@ stores.head()
 stores.tail()
 #QC OK
 
+#%%
 #####STATISTICS
 #Quantitative variable Fuel_Price
 features.Fuel_Price.describe() 
@@ -58,10 +59,13 @@ props = dict(boxstyle="round", facecolor="white", lw=0.5) #Creamos un recuadro
 plt.text(4.25, 1500, textstr, bbox=props) #texto en esa posicion
 plt.axvline(x=m, linewidth=1, linestyle="solid", color="red", label="Mean")
 plt.axvline(x=m-s, linewidth=1, linestyle="solid", color="green", label="S.D." )
+plt.axvline(x=m+s, linewidth=1, linestyle="solid", color="green", label="-S.D." )
+#plt.legend()
 plt.show()
-"""
-
-"""
+print("""As expected, the fluctuation of fuel prices is not considerably large. 
+The mean lies at 3.41$ and the standard deviation is 0.43. Nevertheless, 
+the most frequent price was around 3.65$.""")
+print()#Blank line
 
 #Nominal variable isHoliday
 features.IsHoliday.describe()
@@ -76,8 +80,8 @@ bar_list = ["Working", "Holiday"]
 plt.bar(bar_list,holiday_freq2)
 plt.xlabel("Type of day")
 plt.ylabel("Percentage")
-plt.title("Fig.2: Percentage of working days and holiday")
+plt.title("Fig.2: Percentage of working days and holidays" "\n" "from 2010 to 2013")
 plt.show()
-"""
-
-"""
+print("""Only over 7% of the days are holidays. Nonetheless, the dataset starts 
+in February and ends in July. Therefore, such number does not fully reflect the 
+absolute amount of holidays in a year.""")
